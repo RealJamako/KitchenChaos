@@ -80,7 +80,14 @@ public class PlayerInput : MonoBehaviour
     {
         inputActions.Gameplay.Disable();
 
-        inputActions.Gameplay.Interact.PerformInteractiveRebinding(0)
+        InputAction inputAction = keyBinding switch
+        {
+            KeyBindings.ActionB => inputActions.Gameplay.InteractAlt,
+            KeyBindings.Pause => inputActions.Gameplay.Pause,
+            _ => inputActions.Gameplay.Interact,
+        };
+
+        inputAction.PerformInteractiveRebinding(0)
             .OnComplete(callback =>
             {
                 callback.Dispose();

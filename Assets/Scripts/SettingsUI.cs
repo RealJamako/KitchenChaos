@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityRandom = UnityEngine.Random;
 
@@ -79,15 +80,24 @@ public class SettingsUI : MonoBehaviour
         });
         rebindActionB.onClick.AddListener(() =>
         {
-            RebindBinding(KeyBindings.ActionA);
+            RebindBinding(KeyBindings.ActionB);
         });
         rebindPause.onClick.AddListener(() =>
         {
-            RebindBinding(KeyBindings.ActionA);
+            RebindBinding(KeyBindings.Pause);
         });
         settingsContainer.SetActive(true);
         SetHeaderText(MAIN_SETTINGS_TITLE);
-        rebindButton.Select();
+        if (Gamepad.all.Count > 0)
+        {
+            rebindButton.interactable = false;
+            muteSoundEffectsButton.Select();
+        }
+        else
+        {
+            rebindButton.interactable = true;
+            rebindButton.Select();
+        }
     }
 
     private void Start()

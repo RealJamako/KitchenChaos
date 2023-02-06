@@ -144,6 +144,5 @@ public class GameManager : MonoBehaviour
     public void ShowAndHideCursor(bool set)
     {
         Cursor.visible = set;
-        print($"Cursor Visable: {set}");
     }
 }

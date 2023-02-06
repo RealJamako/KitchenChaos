@@ -31,6 +31,7 @@ public class PauseGameUI : MonoBehaviour
         {
             Loader.LoadScene(GameScenes.MainMenuScene);
         });
+        ShowAndHidePauseContents(true);
         resumeButton.Select();
     }
 
